@@ -1,6 +1,5 @@
 //main.cpp
 
-
 #include <stdio.h>
 #include "Ponto.hpp"
 #include <vector>
