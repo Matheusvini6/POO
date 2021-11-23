@@ -1,6 +1,5 @@
 //main.cpp
-//testar branch
-//testando add
+
 
 #include <stdio.h>
 #include "Ponto.hpp"
