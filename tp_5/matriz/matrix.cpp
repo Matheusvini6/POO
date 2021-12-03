@@ -295,3 +295,89 @@ Matrix &Matrix::operator*= (const int &rhs){
     }
     return *this;
 }
+
+bool operator== (const Matrix &rhs, const Matrix &lhs){
+    bool result = true;
+
+    if(rhs.nRows != lhs.nRows || rhs.nCols != lhs.nCols){
+        result = false;
+        return result;
+    }else{
+        for(int i = 0; i < rhs.nRows; i++){
+            for(int j = 0; j < rhs.nCols; j++){
+                if(rhs.m[i][j] != lhs.m[i][j]){
+                    result = false;
+                    return result;
+                }
+            }
+        }
+    }
+    return result;
+}
+
+bool operator!= (const Matrix &rhs, const Matrix &lhs){
+    bool result = true;
+
+    if(rhs.nRows != lhs.nRows || rhs.nCols != lhs.nCols){
+        return result;
+    }else{
+        for(int i = 0; i < rhs.nRows; i++){
+            for(int j = 0; j < rhs.nCols; j++){
+                if(rhs.m[i][j] != lhs.m[i][j]){
+                    return result;
+                }
+            }
+        }
+    }
+    result = false;
+    return result;
+}
+
+ostream& operator<< (ostream &out, const Matrix &rhs){
+    for(int i = 0; i < rhs.getRows(); i++){
+        for(int j = 0; j < rhs.getCols(); j++){
+            out << rhs.get(i+1, j+1) << " ";
+        }
+        out << std::endl;
+    }
+
+    return out;
+} 
+
+istream &operator >> (istream &input, Matrix &rhs){
+    cout << "Digite os valores da matriz separados por um espaço/enter: " << endl;
+
+    for(int i = 0; i < rhs.getRows(); i++){
+        for(int j = 0; j < rhs.getCols(); j++){
+            input >> rhs.m[i][j];
+        }
+    }
+    return input;
+
+}
+
+Matrix operator~(const Matrix &rhs){
+    int *vec = new int[99999999];
+    int cont = 0;
+    
+    for(int i = 0; i < rhs.nRows; i++){
+        for(int j = 0; j < rhs.nCols; j++){
+            vec[cont] = rhs.m[j][i];
+            cont++;
+        }
+    }
+    cont = 0;
+    int tamanhoMatriz = rhs.nCols *rhs.nRows;
+    for(int i = 0; i < rhs.nCols; i++){
+        for(int j = 0; j < rhs.nRows; j++){
+            rhs.m[i][j] = vec[cont];
+            cont++;
+        }
+    }
+    delete [] vec;
+    return rhs;
+}
+
+//Matrix &Matrix::operator= (const int rhs){
+
+//}

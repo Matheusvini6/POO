@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+using namespace std;
 
 #ifndef MATRIX_H
 #define MATRIX_H
@@ -41,5 +42,11 @@ class Matrix {
         Matrix& operator-= (const Matrix &rhs);
         Matrix& operator*= (const Matrix &rhs);
         Matrix& operator*= (const int &rhs);
+        friend bool operator== (const Matrix &rhs, const Matrix &lhs);
+        friend bool operator!= (const Matrix &rhs, const Matrix &lhs);
+        friend ostream& operator<< (std::ostream& out, const Matrix& rhs);
+        friend istream& operator>>(istream &input, Matrix &rhs);
+        friend Matrix operator~ (const Matrix &rhs);
+        Matrix& operator= (const int &rhs);
 };
 #endif

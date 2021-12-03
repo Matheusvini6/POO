@@ -71,8 +71,34 @@ int main(){
     t *= number; 
     cout << "Matriz T alterada para T *= " << number << ":\nMatriz T: " << endl;
     t.print();
+    
+    if(m == t){
+        cout << "As matrizes M e T são iguais." << endl;
+    }else{
+        cout << "As matrizes M e T são diferentes." << endl;
+    }
 
+    if(m != t){
+        cout << "As matrizes M e T são diferentes." << endl;
+    }else{
+        cout << "As matrizes M e T são iguais." << endl;
+    }
 
+    cout << "\nSobrecarga operador <<:\nMatriz T:\n";
+    cout << t << endl;
+
+    Matrix i(3,3);
+    cout << "Sobrecarga operador >>:\n";
+    cin >> i;
+    cout << "Matriz I:" << endl;
+    cout << i;
+
+    Matrix l = ~i;
+    cout << "L é a matriz I transposta: \nMatriz L:" << endl;
+    cout << l;
+
+    int elemento = l.get(2, 3);
+    cout << "\nTestando função get(int row, int col): " << elemento << endl;
 
     return 0;
 }
