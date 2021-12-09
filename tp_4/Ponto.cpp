@@ -60,7 +60,6 @@ int Ponto2D::getNextId(){
             }
         }
     }
-    
     return newId;
 }
 

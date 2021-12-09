@@ -16,7 +16,6 @@ class Ponto2D{
         int id;
         //verifica se o id gerado já esta em listId
         bool occupaded(int numeroId);
-        
 
     public:
         //construtores e destrutor

@@ -7,6 +7,7 @@
 using namespace std;
 
 int main(){
+    
     Ponto2D *a = new Ponto2D(1, 3);
     Ponto2D *b = new Ponto2D(5, 5);   
     cout << "A";
