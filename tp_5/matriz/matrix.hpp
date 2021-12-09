@@ -19,14 +19,14 @@ class Matrix {
         // Construtores
         Matrix();                           
         Matrix(int rows, int cols, const double &value = 0.0);
-        //Matrix(ifstream &myFile);
+        Matrix(ifstream &myFile);
         Matrix(const Matrix& that);
         // destrutor
         ~Matrix();
     
         // basic getters
-        int getRows() const;
-        int getCols() const;
+        inline int getRows() const {return nRows;};
+        inline int getCols() const{return nCols;};
         double get(int row, int col) const;   
         
         // other methods
@@ -37,7 +37,7 @@ class Matrix {
 
         Matrix operator+ (const Matrix &m) const;
         Matrix operator- (const Matrix &m) const;
-        Matrix operator* (const Matrix &m) const;
+        Matrix operator* (const Matrix &m) const; //resultado errado    
         Matrix& operator+= (const Matrix &rhs);
         Matrix& operator-= (const Matrix &rhs);
         Matrix& operator*= (const Matrix &rhs);
@@ -47,6 +47,6 @@ class Matrix {
         friend ostream& operator<< (std::ostream& out, const Matrix& rhs);
         friend istream& operator>>(istream &input, Matrix &rhs);
         friend Matrix operator~ (const Matrix &rhs);
-        Matrix& operator= (const int &rhs);
+        inline double &operator() (const int row, const int col){return *m[row, col];};
 };
 #endif

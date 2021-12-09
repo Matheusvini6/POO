@@ -1,3 +1,5 @@
+//Teste
+
 #include <stdio.h>
 #include "matrix.hpp"
 #include <fstream>
@@ -6,20 +8,27 @@ using namespace std;
 
 //TESTAR FUNÇÃO GET
 int main(){
-    /*ifstream in("myMatrix.txt");
+    ifstream in("myMatrix.txt");
+
     if(in.is_open()){
         cout << "Arquivo aberto." << endl;
     }else{
-        cout << "arquivo não foi aberto. PROGRAMA ABORTADO!" << endl;
+        cout << "Arquivo não foi aberto. PROGRAMA ABORTADO!" << endl;
         exit(1);
-    }*/
+    }
 
     Matrix Y;
     Matrix X(3,1);
     Matrix Z(3, 2, 7.0);
-    //Matrix W(in);
+    Matrix W(in);
+    in.close();
 
     cout << "Matriz X: " << endl;
+    X.print();
+
+    X(2,1) = 10;
+
+    cout << "\nMatrix X com o valor X(2,1) alterado: " << endl;
     X.print();
     
     cout << "\nMatriz Z:" << endl;
@@ -28,6 +37,9 @@ int main(){
     Matrix b(Z);
     cout << "\nB é a matriz cópia da matriz Z:" << endl;
     b.print();
+
+    cout << "\nMatriz W(inicializada com os dados do arquivo): " << endl;
+    W.print();
     
     Matrix a(3, 3 , 5);
     cout << "\nMatriz A: " << endl;
@@ -99,6 +111,10 @@ int main(){
 
     int elemento = l.get(2, 3);
     cout << "\nTestando função get(int row, int col): " << elemento << endl;
+
+    //testando funções 
+    Matrix r = i * W;
+    cout << r;
 
     return 0;
 }

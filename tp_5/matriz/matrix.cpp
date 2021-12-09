@@ -1,4 +1,5 @@
 // matrix.cpp
+
 #include "matrix.hpp"
 #include <fstream>
 #include <iostream>
@@ -37,10 +38,25 @@ Matrix::Matrix(int rows, int cols, const double &value){
 }
 
 // contrutor parametrico 2 - cria uma matriz com os dados fornecidos pelo arquivo texto myFile.
-//Matrix::Matrix(ifstream &myFile){
+Matrix::Matrix(ifstream &myFile){
+    int cont = 0, linha = 0, coluna = 0, espacoEntreLinha = 0, quebraLinha = 0;
+    myFile >> linha;
+    myFile >> coluna;
+    this->nRows = linha;
+    this->nCols = coluna;
     
-//}
+    m = new double *[linha];
 
+    for(int i = 0; i < linha; i++){
+        m[i] = new double[coluna];
+    }
+
+    for(int i = 0; i < linha; i++){
+        for(int j = 0; j < coluna; j++){
+            myFile >> this->m[i][j];
+        }
+    }
+}
 
 // contrutor de copia
 Matrix::Matrix(const Matrix& that){
@@ -69,19 +85,6 @@ Matrix::~Matrix() {
     }
     delete [] m;
 }
-
-// obtem o numero de linhas
-int Matrix::getRows() const {
-    //READY
-    return nRows;
-}
-
-// obtem o numero de colunas
-int Matrix::getCols() const {
-    //READY
-    return  nCols;
-}
-
 
 // obtem um elemento específico na posição (row,col). Obs: deve checar consistencia
 double Matrix::get(int row, int col) const {
@@ -188,12 +191,12 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
     int soma = 0, multiplica = 0, cont  = 0;
     int *vec = new int[99999999]; 
 
-    if(nRows == rhs.nCols ){//nª de colunas de lhs é igual a nª de linhas de rhs? 
+    if(nCols == rhs.nRows ){//nª de colunas de lhs é igual a nª de linhas de rhs? 
         Matrix aux(nRows, rhs.nCols);                      
 
         for(int i = 0; i < nRows; i++){
             for(int j = 0; j < nCols; j++){
-                for(int k = 0; k < rhs.nCols; k++){
+                for(int k = 0; k < rhs.nRows; k++){
                     multiplica = m[i][k] * rhs.m[k][j];
                     soma += multiplica;
                 }
@@ -201,9 +204,6 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
                 cont++;
                 soma = 0;
             }
-            //vec[cont] = soma;
-            //cont++;
-            //soma = 0;
         }
 
         cont = 0;
@@ -216,7 +216,7 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
         delete [] vec;
         return aux;
     }else{
-        cout << "As matrizes podem ser multiplicadas, o nª de colunas da matriz à esquerda não é igual ao nª de linhas da matriz à direita." << endl;
+        cout << "As matrizes não podem ser multiplicadas, o nª de colunas da matriz à esquerda não é igual ao nª de linhas da matriz à direita." << endl;
     }
     delete [] vec;
     Matrix a;
@@ -377,7 +377,3 @@ Matrix operator~(const Matrix &rhs){
     delete [] vec;
     return rhs;
 }
-
-//Matrix &Matrix::operator= (const int rhs){
-
-//}
