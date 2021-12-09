@@ -136,7 +136,7 @@ void Matrix::zeros(){
     }
 }
 
-// faz com que a matriz torne-se uma matriz cujos elementos sao iguaia a 1
+// faz com que a matriz torne-se uma matriz cujos elementos sao iguais a 1
 void Matrix::ones(){
     //READY
     for(int i = 0; i < this->nRows; i++){

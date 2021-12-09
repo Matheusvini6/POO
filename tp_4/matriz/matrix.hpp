@@ -27,7 +27,7 @@ class Matrix {
     
         // basic getters
         inline int getRows() const {return nRows;};
-        int getCols() const{return nCols;};
+        inline int getCols() const{return nCols;};
         double get(int row, int col) const;   
         
         // other methods
