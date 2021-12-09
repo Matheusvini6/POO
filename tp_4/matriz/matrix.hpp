@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std; 
+
 #ifndef MATRIX_H
 #define MATRIX_H
 
@@ -24,8 +26,8 @@ class Matrix {
         ~Matrix();
     
         // basic getters
-        int getRows() const;
-        int getCols() const;
+        inline int getRows() const {return nRows;};
+        int getCols() const{return nCols;};
         double get(int row, int col) const;   
         
         // other methods

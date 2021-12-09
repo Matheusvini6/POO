@@ -1,5 +1,5 @@
 // matrix.cpp
-#include "matrix.h"
+#include "matrix.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -15,7 +15,6 @@ Matrix::Matrix(){
 
 }
     
-
 // contrutor parametrico 1 - cria uma matriz com nRows  = rows, nCols = cols e 
 // com todos os elementos iguais a 0.0 (double)
 Matrix::Matrix(int rows, int cols, const double &value){
@@ -37,9 +36,24 @@ Matrix::Matrix(int rows, int cols, const double &value){
 
 // contrutor parametrico 2 - cria uma matriz com os dados fornecidos pelo arquivo texto myFile.
 Matrix::Matrix(ifstream &myFile){
+    int cont = 0, linha = 0, coluna = 0, espacoEntreLinha = 0, quebraLinha = 0;
+    myFile >> linha;
+    myFile >> coluna;
+    this->nRows = linha;
+    this->nCols = coluna;
     
-}
+    m = new double *[linha];
 
+    for(int i = 0; i < linha; i++){
+        m[i] = new double[coluna];
+    }
+
+    for(int i = 0; i < linha; i++){
+        for(int j = 0; j < coluna; j++){
+            myFile >> this->m[i][j];
+        }
+    }
+}
 
 // contrutor de copia
 Matrix::Matrix(const Matrix& that){
@@ -57,7 +71,6 @@ Matrix::Matrix(const Matrix& that){
             m[i][j] = that.m[i][j];
         }
     }
-
 }
 
 // destrutor
@@ -68,19 +81,6 @@ Matrix::~Matrix() {
     }
     delete [] m;
 }
-
-// obtem o numero de linhas
-int Matrix::getRows() const {
-    //READY
-    return nRows;
-}
-
-// obtem o numero de colunas
-int Matrix::getCols() const {
-    //READY
-    return  nCols;
-}
-
 
 // obtem um elemento específico na posição (row,col). Obs: deve checar consistencia
 double Matrix::get(int row, int col) const {
@@ -94,9 +94,7 @@ double Matrix::get(int row, int col) const {
         cout << "Acesso a posição inválida do vetor. PROGRAMA ABORTADO!";
         exit(1);
     }
-
 }
-  
 
 // imprime o conteudo da matriz
 void Matrix::print() const {
