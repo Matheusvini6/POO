@@ -96,25 +96,22 @@ int main(){
         cout << "As matrizes M e T são iguais." << endl;
     }
 
-    cout << "\nSobrecarga operador <<:\nMatriz T:\n";
+    cout << "\nSobrecarga operador <<(output):\nMatriz T:\n";
     cout << t << endl;
 
-    Matrix i(3,3);
-    cout << "Sobrecarga operador >>:\n";
+    Matrix i(3, 3); //se quiser outra ordem so mudar os parametros
+    cout << "Sobrecarga operador >>:(matriz 3x3)\n";
     cin >> i;
-    cout << "Matriz I:" << endl;
+    cout << "\nMatriz I(matriz digitada):" << endl;
     cout << i;
-
     Matrix l = ~i;
-    cout << "L é a matriz I transposta: \nMatriz L:" << endl;
+    cout << "\nL é a matriz I transposta: \nMatriz L:" << endl;
     cout << l;
-
-    int elemento = l.get(2, 3);
-    cout << "\nTestando função get(int row, int col): " << elemento << endl;
-
-    //testando funções 
+    ~i;//desfaxzendo tranposiçao da matriz I
     Matrix r = i * W;
+    cout << "\nMatriz R = I * W:\nMatriz R:" << endl;
     cout << r;
-
+    int elemento = r.get(2, 1);
+    cout << "\nTestando função get(int row, int col): " << elemento << endl;
     return 0;
 }

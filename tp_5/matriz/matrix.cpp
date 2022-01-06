@@ -193,10 +193,9 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
 
     if(nCols == rhs.nRows ){//nª de colunas de lhs é igual a nª de linhas de rhs? 
         Matrix aux(nRows, rhs.nCols);                      
-
-        for(int i = 0; i < nRows; i++){
-            for(int j = 0; j < nCols; j++){
-                for(int k = 0; k < rhs.nRows; k++){
+        for(int i = 0; i < nRows; i++){//qtd linhas lhs
+            for(int j = 0; j < rhs.nCols; j++){// qtd colunas rhs
+                for(int k = 0; k < rhs.nRows; k++){//qtd colunas lhs 
                     multiplica = m[i][k] * rhs.m[k][j];
                     soma += multiplica;
                 }
@@ -205,7 +204,6 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
                 soma = 0;
             }
         }
-
         cont = 0;
         for(int i = 0; i < nRows; i++){
             for(int j = 0; j < rhs.nCols; j++){
@@ -218,6 +216,7 @@ Matrix Matrix::operator* (const Matrix &rhs) const{
     }else{
         cout << "As matrizes não podem ser multiplicadas, o nª de colunas da matriz à esquerda não é igual ao nª de linhas da matriz à direita." << endl;
     }
+    //se chegar aqui as matrizes nao poderam ser multiplicadas
     delete [] vec;
     Matrix a;
     return a;
@@ -255,10 +254,11 @@ Matrix &Matrix::operator*= (const Matrix &rhs){
     int soma = 0, multiplica = 0, cont  = 0;
     int *vec = new int[99999999]; 
 
-    if(nRows == rhs.nCols ){//nª de colunas de lhs é igual a nª de linhas de rhs?                     
-        for(int i = 0; i < nRows; i++){
-            for(int j = 0; j < nCols; j++){
-                for(int k = 0; k < rhs.nCols; k++){
+    if(nCols == rhs.nRows ){//nª de colunas de lhs é igual a nª de linhas de rhs? 
+        Matrix aux(nRows, rhs.nCols);                      
+        for(int i = 0; i < nRows; i++){//qtd linhas lhs
+            for(int j = 0; j < rhs.nCols; j++){// qtd colunas rhs
+                for(int k = 0; k < rhs.nRows; k++){//qtd colunas lhs 
                     multiplica = m[i][k] * rhs.m[k][j];
                     soma += multiplica;
                 }
@@ -266,12 +266,7 @@ Matrix &Matrix::operator*= (const Matrix &rhs){
                 cont++;
                 soma = 0;
             }
-            //vec[cont] = soma;
-            //cont++;
-            //soma = 0;
         }
-
-        nCols = rhs.nCols;
         cont = 0;
         for(int i = 0; i < nRows; i++){
             for(int j = 0; j < rhs.nCols; j++){
@@ -280,8 +275,8 @@ Matrix &Matrix::operator*= (const Matrix &rhs){
             }
         }
     }else{
-        cout << "As matrizes podem ser multiplicadas, o nª de colunas da matriz à esquerda não é igual ao nª de linhas da matriz à direita." << endl;
-        cout << "Retoronada matriz mais à esquerda." << endl;
+        cout << "As matrizes não podem ser multiplicadas, o nª de colunas da matriz à esquerda não é igual ao nª de linhas da matriz à direita." << endl;
+        cout << "Retornando matriz à esquerda." << endl;
     }
     delete [] vec;
     return *this;
