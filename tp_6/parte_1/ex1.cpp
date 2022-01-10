@@ -21,6 +21,5 @@ int main(){
     cin >> position;
     value = fibonacci(position);
     cout << value << endl;
-
     return 0;
 }
