@@ -184,7 +184,7 @@ template<class T> Node<T>* List<T>::erase(Node<T> *it){
             return temp2;
         }
     }else{
-        throw 0; 
+        throw "Impossivel remover o elemento da Lista."; 
         //cerr << "Impossivel remover o elemento da Lista." << endl;
     }
     //return 0;//adicionado    
@@ -203,7 +203,7 @@ template<class T> void List<T>::erase(const T &value){
         }
     }
     else{
-        throw 0;
+        throw "Lista Vazia! Impossivel remover o elemento da Lista.";
     }
         //cerr << "Lista Vazia! Impossivel remover o elemento da Lista." << endl;    
 }

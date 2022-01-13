@@ -35,10 +35,8 @@ int main(int argc, char *argv[]){
     // remove os elementos de valor igual a 6 existentes na lista 
     try{
         A.erase(6);
-    }catch(int erro){
-        if (erro == 0){
-            cout << "Impossivel remover o elemento da Lista." << endl;
-        }
+    }catch(string erro){
+        cout << erro << endl;
     }
 
     cout << "A.erase(6)" << endl;
