@@ -187,7 +187,6 @@ template<class T> Node<T>* List<T>::erase(Node<T> *it){
         throw "Impossivel remover o elemento da Lista."; 
         //cerr << "Impossivel remover o elemento da Lista." << endl;
     }
-    //return 0;//adicionado    
 }
 
 // remove os elementos de valor igual a T existentes na lista O(n)
