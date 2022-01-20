@@ -14,7 +14,6 @@ int main(){
     p2 = p1;
     cout << p2 << endl;
 
-
     Ponto3D p3(2,4.5,5), p4;
     p4.set(1,0.3,12);
     cout << p3 << endl;

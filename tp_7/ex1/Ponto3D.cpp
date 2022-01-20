@@ -31,8 +31,7 @@ Ponto3D &Ponto3D::operator= (const Ponto2D &p2){
     y_ = p2.get_y();
     z = z;
     set(x_, y_);*/
-    set(p2.get_x(), p2.get_y());
-    z = z;
+    set(p2.get_x(), p2.get_y(), z );
 
     return *this;
 }

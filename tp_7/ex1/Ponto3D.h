@@ -9,6 +9,7 @@ class Ponto2D{
     
      public:
         Ponto2D(int xx = 0.0, int yy = 0.0):x(xx),y(yy){ };
+        Ponto2D(double xx, double yy ):x(xx),y(yy){ };
         friend ostream& operator<< (ostream &op, const Ponto2D &p);
         Ponto2D& operator= (const Ponto2D &p);
         ~Ponto2D(){};
@@ -28,7 +29,7 @@ class Ponto3D: public Ponto2D{
         Ponto3D(double xx = 0, double yy = 0, double zz=0):Ponto2D(xx,yy),z(zz){};
         friend ostream& operator<< (ostream &op, const Ponto3D &p);
         Ponto3D& operator= (const Ponto2D &p);
-        void set(double nx = 0, double ny = 0, double nz=0){Ponto2D(nx, ny); z = nz;}
+        void set(double nx, double ny, double nz){Ponto2D::set(nx,ny); z = nz;}
         double get_z(){return z;};
             
     private:
