@@ -1,0 +1,8 @@
+1) É possível adicionar uma função membro na classe Derived que chama a função read()?
+R-> Sim, pois a função read() é protected. 
+
+2)Alterando a herança para private, ainda assim é possível adicionar uma função membro na classe Derived que chama a função read()?
+R-> Não, pois, nesse caso, a função read() será privada.
+
+3) É possível chamar a função read() a partir de um objeto do tipo Derived?
+R->Sim, pois a herança é pública e read() é protected
