@@ -1,9 +1,9 @@
+//test file
+
 #include <iostream>
 #include "Ponto3D.h"
 
 using namespace std;
-
-// código para teste da classe Ponto3D
     
 int main(){
     Ponto2D p1(3,4), p2;
