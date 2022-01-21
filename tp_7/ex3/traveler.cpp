@@ -1,5 +1,4 @@
 //implementaiton file
-
 #include <iostream>
 #include "traveler.h"
 
