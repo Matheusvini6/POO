@@ -15,6 +15,7 @@ class Traveler{
         Traveler(string s):name(s){}
         Traveler(const Traveler &t){name = t.name;}
         Traveler &operator= (const Traveler &rhs);
+        string getName(){return name;}
 
 };      
 
@@ -26,17 +27,20 @@ class Pager{
         Pager(string s): Pname(s){}
         Pager(const Pager &rhs){Pname = rhs.Pname;}
         Pager &operator= (const Pager &rhs);
+        string getPname(){return Pname;}
 };
+
 
 class BusinessTraveler: public Traveler{
     private:
         Pager p;
 
     public:
-        BusinessTraveler::BusinessTraveler(string s1 = "1", string s2 = "1"):Traveler(s1), p(s2) {}
-        BusinessTraveler::BusinessTraveler(string s):Traveler(s), p(s) {}
-        BusinessTraveler::BusinessTraveler(const BusinessTraveler &rhs) :Traveler(rhs) , p(rhs.p){};
+        BusinessTraveler(string s = "1"):Traveler(s), p(s) {}//funciona como os dois primeiros construtores pedidos
+        //BusinessTraveler(string s):Traveler(s), p(s) {}
+        BusinessTraveler(const BusinessTraveler &rhs) :Traveler(rhs) , p(rhs.p){};
         BusinessTraveler &operator= (const BusinessTraveler &rhs);
+        string getPager(){return p.getPname(); };
 };
 
-#endif;
+#endif
