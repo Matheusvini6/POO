@@ -10,13 +10,12 @@ using namespace std;
 class Professor{
         string nome;
     public:
-        Professor(string n): nome(n){};
+        Professor(string n): nome(n){}
         string getName() const {return this->nome;};
         virtual double getSalario() = 0;
-        virtual ~Professor();
-
+        virtual ~Professor(){};
         void setNome(string s) {this->nome = s;};
-        Professor(){};
+        Professor(){/*cout << "chamou" << endl;*/};
 
 };
 
@@ -24,34 +23,33 @@ class ProfHorista: public Professor {
         double nrNorasTrabalhadas;
         double valorHora;
     public:
-        ProfHorista(string n, double nht, double vh){
-            setNome(n);
-            nrNorasTrabalhadas = nht;
-            valorHora = vh;
-        };
+        ProfHorista(string n, double nht, double vh):Professor(n), 
+        nrNorasTrabalhadas(nht), valorHora(vh){}
+        
         double getSalario();
-        virtual ~ProfHorista();
+        virtual ~ProfHorista(){};
+        double getHorasTrabalho(){return nrNorasTrabalhadas;}
+        double getValorHora(){return valorHora;} 
 };
 
 class ProfIntegral: public Professor {
         double salarioMensal;
     public:
-       ProfIntegral(string n, double sm){
-           setNome(n);
-           salarioMensal = sm;
-       };
+       ProfIntegral(string n, double sm):Professor(n), salarioMensal(sm){}
        double getSalario();
-       virtual ~ProfIntegral(){}
+       virtual ~ProfIntegral(){};
 };
 
 class Universidade{
     private:
-        vector<Professor> professores;
+        vector<Professor*> professores;
         double total;
     public:
-        void addProfessor(Professor &p) {professores.push_back(p); };
+        Universidade(){};
+        void addProfessor(Professor *p) {professores.push_back(p); };
         double totalPago();
-
+        ~Universidade(){};
+        void imprime();
 };
 
 #endif
