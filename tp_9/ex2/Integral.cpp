@@ -33,6 +33,7 @@ double Quadratica::getIntegral(double limInferior, double limSuperior, double in
     return result;
 }
 
+// f(x) = sen(x)/x
 double Senoide::getIntegral(double limInferior, double limSuperior, double intervalos){
     double xi, h, result, somatorio = 0;
     double fx0, fxn;
@@ -52,7 +53,7 @@ double Senoide::getIntegral(double limInferior, double limSuperior, double inter
     return result;
 }
 
-
+// f(x) = ax + b
 double Linear::getIntegral(double limInferior, double limSuperior, double intervalos){
     double xi, h, result, somatorio = 0;
     double fx0, fxn;
