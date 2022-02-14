@@ -37,17 +37,17 @@ void Agenda::addInformacoes(){
             cout << "Digite uma data de aniversário no formato: dd/mm/aaaa" << endl;
             string data;
             cin >> data;
-            Amigo a;
-            a.setDateBirthday(data);
-            person[i] = &a;          
+            Amigo *a = new Amigo();
+            a->setDateBirthday(data);
+            person[i] = a;
             
         }else if(tipoPessoa[i] == 2){ //cria um conhecido
             cout << "Digite um e-mail: " << endl;
             string email;
             cin >> email;
-            Conhecido c;
-            c.setEmail(email);
-            person[i] = &c;   
+            Conhecido *c = new Conhecido();
+            c->setEmail(email);
+            person[i] = c;   
         }
     }
 }
