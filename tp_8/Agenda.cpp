@@ -61,3 +61,9 @@ void Agenda::imprimeAniversarios(){
     }
 }
 
+Agenda::~Agenda(){
+    int size_vector = person.size();
+    for(int i=0; i<size_vector; i++){
+        delete(person[i]);
+    }
+}

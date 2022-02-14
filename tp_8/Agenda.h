@@ -48,6 +48,7 @@ class Agenda{
     
     public:
         Agenda(int numPessoas);
+        ~Agenda();
         void setNumberAmigos(int maisUm) {numberAmigos+= maisUm;};
         void setNumberConhecidos(int maisUm) {numberConhecidos += maisUm;};
         inline void setPerson(Pessoa *p) { person.push_back(p); };//define o tipo de pessoa
