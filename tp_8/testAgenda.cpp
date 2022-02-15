@@ -6,7 +6,9 @@
 using namespace std;
 
 int main(){
-    int qtdPessoas = 3;
+    int qtdPessoas=0;
+    cout << "Digite numero de pessoas da agenda" << endl;
+    cin >> qtdPessoas;
     Agenda a(qtdPessoas);
     a.addInformacoes();
     a.imprimeAniversarios();
