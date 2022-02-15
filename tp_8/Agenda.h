@@ -15,6 +15,7 @@ class Pessoa{
         Pessoa(string nome, int idade): name(nome), age(idade) {};
         Pessoa(): name("indefinido"), age(0) {};
         void setAge(int idade){this->age = idade;};
+        void setName(string name){this->name = name;};
         virtual string getInformation() = 0;
         virtual ~Pessoa(){};
 };
@@ -49,10 +50,9 @@ class Agenda{
     public:
         Agenda(int numPessoas);
         ~Agenda();
-        void setNumberAmigos(int maisUm) {numberAmigos+= maisUm;};
-        void setNumberConhecidos(int maisUm) {numberConhecidos += maisUm;};
+        void addNumberAmigos() {numberAmigos+= 1;};
+        void addNumberConhecidos() {numberConhecidos += 1;};
         inline void setPerson(Pessoa *p) { person.push_back(p); };//define o tipo de pessoa
-        inline void setTipoPessoa(int tipo) {tipoPessoa.push_back(tipo); }; //identificador do tipo de pessoa(1 or 2)
         void addInformacoes();
         void  imprimeAniversarios();
 };
