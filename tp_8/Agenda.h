@@ -5,7 +5,7 @@
 #ifndef AGENDA_H
 #define AGENDA_H
 
-using namespace std;//fazer destrutor de todas as classes
+using namespace std;
 
 class Pessoa{
     private:
@@ -15,10 +15,10 @@ class Pessoa{
         Pessoa(string nome, int idade): name(nome), age(idade) {};
         Pessoa(): name("indefinido"), age(0) {};
         void setAge(int idade){this->age = idade;};
+        void setName(string name){this->name = name;};
         virtual string getInformation() = 0;
         virtual ~Pessoa(){};
 };
-
 
 class Amigo: public Pessoa{
     private:
@@ -48,13 +48,15 @@ class Agenda{
     
     public:
         Agenda(int numPessoas);
-        void setNumberAmigos(int maisUm) {numberAmigos+= maisUm;};
-        void setNumberConhecidos(int maisUm) {numberConhecidos += maisUm;};
+        ~Agenda();
+        void addNumberAmigos() {numberAmigos+= 1;};
+        void addNumberConhecidos() {numberConhecidos += 1;};
         inline void setPerson(Pessoa *p) { person.push_back(p); };//define o tipo de pessoa
-        inline void setTipoPessoa(int tipo) {tipoPessoa.push_back(tipo); }; //identificador do tipo de pessoa(1 or 2)
         void addInformacoes();
         void  imprimeAniversarios();
+        void  imprimeEmail();
+        inline int getNumberAmigos(){return numberAmigos;};
+        inline int getNumberConhecidos(){return numberConhecidos;};
 };
-
 
 #endif
